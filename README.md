@@ -16,7 +16,8 @@ We will use ATAC-seq data generated for the paper [Runx3 pioneers chromatin acce
 Download the data then unzip from NCBI's Gene Expression Omnibus (GEO) with the script [data_retrieval.slurm](./scripts/data_retrieval.slurm):
 
 ```bash
-BATCH --job-name=data_retrieval
+#!/bin/bash
+$SBATCH --job-name=data_retrieval
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ATrouern-Trend@scripps.edu
 #SBATCH --nodes=1
