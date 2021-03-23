@@ -17,7 +17,7 @@ Download the data then unzip from NCBI's Gene Expression Omnibus (GEO) with the 
 
 ```bash
 #!/bin/bash
-$SBATCH --job-name=data_retrieval
+#SBATCH --job-name=data_retrieval
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ATrouern-Trend@scripps.edu
 #SBATCH --nodes=1
