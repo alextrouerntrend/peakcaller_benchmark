@@ -23,8 +23,7 @@ mkdir $BASE_DIR/raw_data
 wget 'http://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?save=efetch&rettype=runinfo&db=sra&term='${BIOPROJECT} -O - | tee $BASE_DIR/raw_data/SraRunInfo.csv
 
 # Use RunInfo to guide SRA downloads
-esearch -db sra -query $BIOPROJECT | efetch -format runinfo | cut -d',' -f 1 | grep SRR | xargs -n 1 -P 12 fastq-dump -O $BASE_DIR/raw_data -X 10 --split-files
-wait
+esearch -db sra -query $BIOPROJECT | efetch -format runinfo | cut -d',' -f 1 | grep SRR | xargs -n 1 -P 12 fastq-dump -O $BASE_DIR/raw_data --split-files
 # Match run with BioSample
 cd $BASE_DIR/raw_data
 
