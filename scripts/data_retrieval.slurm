@@ -9,8 +9,6 @@
 #SBATCH -o dataret.%j.out
 #SBATCH -e dataret.%j.err
 
-module load sra-tools
-
 BIOPROJECT=PRJNA436008
 
 # Find project base directory
