@@ -5,6 +5,9 @@ Contents
 
 1. Overview
 2. Downloading data from SRA
+3. Quality Control
+4. Adaptor and read quality trimming
+
 
 ### Overview
 Assay for Transposase Accessible Chromatin Sequencing (ATAC-seq) data is analyzed by tools designed for predecessor genomic genrichment assays, such as the ubiquitous [ChIP-seq](1). Here I document the benchmarking of several of these tools within a standard ATAC-seq pipeline for differential peak analysis. The tools included in the benchmarking are as follows.
@@ -105,7 +108,7 @@ TRIMMED=( ${BASE_DIR}/trimmed/*.fastq )
 #echo "${TRIMMED[@]}" | xargs -n 4 fastqc -t 4 -o ${BASE_DIR}/fastqc/posttrim -f fastq {}
 ```
 ### Read trimming
-
+Adaptor and read quality trimming can be performed using a variety of available tools. Here we use [cutadapt](https://cutadapt.readthedocs.io/en/stable/) to remove Illumina Nextera paired-end sequencing adaptors which are commonly used in ATACseq experiments. We set an post-trimming minimum read length of 35bp (`-m 35`), a nextseq quality minimum score of 20 (`--nextseq-trim=20`) and a maximum indeterminate nucleotide (N) representation per read of 10% (`--max-n 0.1`). 
 
 ```bash
 #!/bin/bash
