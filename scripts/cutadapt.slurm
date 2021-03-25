@@ -6,7 +6,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
-#SBATCH --mem=20gb
+#SBATCH --mem=10gb
 #SBATCH -o cutadapt.%j.out
 #SBATCH -e cutadapt.%j.err
 
