@@ -7,8 +7,8 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=4gb
-#SBATCH -o fastqc_pretrim.%j.out
-#SBATCH -e fastqc_pretrim.%j.err
+#SBATCH -o fastqc.%j.out
+#SBATCH -e fastqc.%j.err
 
 module load fastqc
 
