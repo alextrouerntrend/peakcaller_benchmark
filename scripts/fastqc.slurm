@@ -12,7 +12,7 @@
 
 module load fastqc
 
-# Line 29 can be commented out and 32 uncommented after read trimming with cutadapt to get post-trimming QC report.  
+# Line 29 can be commented out and 33 uncommented after read trimming with cutadapt to get post-trimming QC report.  
 
 BASE_DIR=$( pwd | rev | cut -d'/' -f2- | rev )
 
@@ -25,8 +25,9 @@ if [[ ! -d "${BASE_DIR}/fastqc/posttrim" ]]; then
 fi
 
 # Pretrimming FastQC
-READS=( ${BASE_DIR}/raw_data/* )
+READS=( ${BASE_DIR}/raw_data/*.fastq )
 echo "${READS[@]}" | xargs -n 4 fastqc -t 4 -o ${BASE_DIR}/fastqc/pretrim -f fastq {}
 
 # Postrimming FastQC
-#echo "${READS[@]}" | xargs -n 4 fastqc -t 4 -o ${BASE_DIR}/fastqc/posttrim -f fastq {}
+TRIMMED=( ${BASE_DIR}/trimmed/*.fastq )
+#echo "${TRIMMED[@]}" | xargs -n 4 fastqc -t 4 -o ${BASE_DIR}/fastqc/posttrim -f fastq {}
